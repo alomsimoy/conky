@@ -1,0 +1,83 @@
+# -- Conky settings -- #
+background no
+update_interval 1
+ 
+cpu_avg_samples 2
+net_avg_samples 2
+ 
+override_utf8_locale yes
+ 
+double_buffer yes
+no_buffers yes
+ 
+text_buffer_size 2048
+imlib_cache_size 0
+ 
+# -- Window specifications -- #
+ 
+own_window yes
+own_window_type override
+own_window_transparent yes
+own_window_hints undecorate,sticky,skip_taskbar,skip_pager,below
+ 
+border_inner_margin 0
+border_outer_margin 0
+ 
+minimum_size 1024 500
+maximum_width 1024
+ 
+alignment tl
+gap_x 0
+gap_y 79
+ 
+# -- Graphics settings -- #
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+ 
+# -- Text settings -- #
+use_xft yes
+xftfont Santana:size=18
+xftalpha 0.8
+ 
+uppercase no
+ 
+default_color FFFFFF
+ 
+# -- Lua Load -- #
+lua_load ~/.config/conky/scripts/clock_rings.lua
+lua_draw_hook_pre clock_rings
+ 
+TEXT
+##Clock##
+${voffset 137}${goto 118}${font FreeSans:style=Bold:pixelsize=26}${time %H:%M}
+##Date##
+${voffset 84}${goto 105}${font FreeSans:pixelsize=16}${time %d de %B}
+##RAM##
+${voffset 10}${goto 50}${font Freesans:style=Bold:pixelsize=13}RAM ${goto 185}$memperc%${font}
+${voffset -20}${goto 50}${font Freesans:pixelsize=12}${top_mem name 1} ${goto 180}${top_mem mem 1}
+${goto 50}${font Freesans:pixelsize=12}${top_mem name 2} ${goto 180}${top_mem mem 2}
+${goto 50}${font Freesans:pixelsize=12}${top_mem name 3} ${goto 180}${top_mem mem 3}
+${goto 50}${font Freesans:pixelsize=12}${top_mem name 4} ${goto 180}${top_mem mem 4}
+${goto 50}${font Freesans:pixelsize=12}${top_mem name 5} ${goto 180}${top_mem mem 5}
+##CPU##
+${voffset -159}${goto 285}${font Freesans:style=Bold:pixelsize=13}CPU ${goto 420}$cpu%${font}
+${voffset -20}${goto 285}${font Freesans:pixelsize=12}${top name 1} ${goto 415}${top cpu 1}
+${goto 285}${font Freesans:pixelsize=12}${top name 2} ${goto 415}${top cpu 2}
+${goto 285}${font Freesans:pixelsize=12}${top name 3} ${goto 4150}${top cpu 3}
+${goto 285}${font Freesans:pixelsize=12}${top name 4} ${goto 415}${top cpu 4}
+${goto 285}${font Freesans:pixelsize=12}${top name 5} ${goto 415}${top cpu 5}
+##home##
+${voffset -309}${goto 25}${font Freesans:style=Bold:pixelsize=13}home: ${goto 105}${fs_used_perc /home}%${font}
+##battery##
+${voffset -18}${goto 165}${font FreeSans:style=Bold:pixelsize=13}Batería: ${goto 240}${battery_percent BAT0}%${font}
+##root##
+${voffset -18}${goto 305}${font Freesans:style=Bold:pixelsize=13}root: ${goto 385}${fs_used_perc /}%${font}
+##RED##
+${if_existing /proc/net/route wlp9s0}
+${voffset 29}${goto 275}${font FreeSans:style=Bold:pixelsize=11}${wireless_essid wlp9s0}
+${voffset 3}${goto 275}${font FreeSans:pixelsize=10}${addr wlp9s0}  ${wireless_link_qual_perc wlp9s0}% ${goto 450}↓${downspeed wlp9s0}/s ↑${upspeed wlp9s0}/s 
+${voffset -43}${goto 430}${downspeedgraph wlp9s0 25,160 cccccc ffffff}
+${else}
+${voffset 29}${goto 275}${font FreeSans:style=Bold:pixelsize=11}No conectado
