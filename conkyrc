@@ -101,3 +101,4 @@ ${fs_bar 4 /home}
 #${font FreeSans:pixelsize=9}${exec dropbox status}
 
 ${font FreeSans:style=Bold:pixelsize=10}Volume: ${execi 2 ~/.config/conky/scripts/vol.sh}
+

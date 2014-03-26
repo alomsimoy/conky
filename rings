@@ -49,6 +49,7 @@ default_color FFFFFF
 lua_load ~/.config/conky/scripts/clock_rings.lua
 lua_draw_hook_pre clock_rings
  
+
 TEXT
 ##Clock##
 ${voffset 137}${goto 118}${font FreeSans:style=Bold:pixelsize=26}${time %H:%M}

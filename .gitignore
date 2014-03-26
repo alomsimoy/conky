@@ -1,0 +1,8 @@
+# Ignore conkyrings folder
+
+/conkyrings
+
+
+# Ignore conkyrc
+
+/conkyrc
